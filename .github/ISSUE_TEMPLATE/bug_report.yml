@@ -1,0 +1,51 @@
+name: Bug report
+description: Report a reproducible problem in BADADAU
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping test BADADAU. The project is pre-alpha, so clear reproduction steps are especially useful.
+  - type: input
+    id: revision
+    attributes:
+      label: BADADAU revision
+      description: Commit SHA, tag, or build identifier.
+      placeholder: e.g. 167bc28 or later
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Linux
+        - Windows
+        - macOS
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Create/open ...
+        2. Add ...
+        3. Click ...
+        4. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / additional context
+      description: Paste relevant logs or attach screenshots. Remove private paths, credentials, project content, or proprietary plugin data when possible.

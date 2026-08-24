@@ -1,0 +1,29 @@
+name: Feature request
+description: Propose a workflow or product improvement for BADADAU
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: What workflow is difficult, slow, confusing, or currently impossible?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe how you would expect BADADAU to solve it.
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References / examples
+      description: Optional examples from other DAWs or workflows. Focus on behavior rather than copying visual design.
+  - type: textarea
+    id: engine
+    attributes:
+      label: Engine impact
+      description: If known, explain whether this appears to require an Ardour engine/session-format change or could live in the UI/workflow layer.
