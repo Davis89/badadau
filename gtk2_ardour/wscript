@@ -646,7 +646,8 @@ def build(bld):
 
     # operate on copy to avoid adding sources twice
     obj.source    = list(gtk2_ardour_sources)
-    obj.target    = 'ardour-' + bld.env['VERSION']
+    # Badadau fork modification, 2026-08-24: executable follows product slug.
+    obj.target    = bld.env['PROGRAM_SLUG'] + '-' + bld.env['VERSION']
     obj.includes  = ['.']
 
     if bld.is_defined('WINDOWS_VST_SUPPORT'):
@@ -765,7 +766,7 @@ def build(bld):
             'CONFDIR'        : os.path.normpath(bld.env['CONFDIR']),
             'LIBS'           : 'build/libs',
             'VERSION'        : bld.env['VERSION'],
-            'EXECUTABLE'     : 'build/gtk2_ardour/ardour-' + bld.env['VERSION']
+            'EXECUTABLE'     : 'build/gtk2_ardour/' + bld.env['PROGRAM_SLUG'] + '-' + bld.env['VERSION']
     }
 
     if bld.env['build_target'] in ('mingw', 'msvc') and sys.platform == "win32":
@@ -790,7 +791,7 @@ def build(bld):
 
     obj              = bld(features = 'subst')
     obj.source       = 'ardour.sh.in'
-    obj.target       = 'ardour' + bld.env['MAJOR']
+    obj.target       = bld.env['PROGRAM_SLUG'] + bld.env['MAJOR']
     obj.chmod        = Utils.O755
     obj.dict         = wrapper_subst_dict
     obj.install_path = bld.env['BINDIR']
@@ -932,6 +933,7 @@ def build(bld):
     freedesktop_subst_dict = {
                     'ARDOUR_EXEC' : bld.env['lwrcase_dirname'],
                     'ARDOUR_ICON' : bld.env['lwrcase_dirname'],
+                    'PROGRAM_NAME' : bld.env['PROGRAM_NAME'],
                     'VERSION': bld.env['VERSION'],
                     'DATE': bld.env['DATE'],
     }
@@ -964,12 +966,12 @@ def build(bld):
 
         # install desktop icon files
         icon_file_name = bld.env['lwrcase_dirname'] + '.png'
-        bld.install_as('${PREFIX}/share/icons/hicolor/16x16/apps/' + icon_file_name, 'resources/Ardour-icon_16px.png')
-        bld.install_as('${PREFIX}/share/icons/hicolor/22x22/apps/'+ icon_file_name, 'resources/Ardour-icon_22px.png')
-        bld.install_as('${PREFIX}/share/icons/hicolor/32x32/apps/'+ icon_file_name, 'resources/Ardour-icon_32px.png')
-        bld.install_as('${PREFIX}/share/icons/hicolor/48x48/apps/'+ icon_file_name, 'resources/Ardour-icon_48px.png')
-        bld.install_as('${PREFIX}/share/icons/hicolor/256x256/apps/'+ icon_file_name, 'resources/Ardour-icon_256px.png')
-        bld.install_as('${PREFIX}/share/icons/hicolor/512x512/apps/'+ icon_file_name, 'resources/Ardour-icon_512px.png')
+        bld.install_as('${PREFIX}/share/icons/hicolor/16x16/apps/' + icon_file_name, 'resources/' + bld.env['PROGRAM_NAME'] + '-icon_16px.png')
+        bld.install_as('${PREFIX}/share/icons/hicolor/22x22/apps/'+ icon_file_name, 'resources/' + bld.env['PROGRAM_NAME'] + '-icon_22px.png')
+        bld.install_as('${PREFIX}/share/icons/hicolor/32x32/apps/'+ icon_file_name, 'resources/' + bld.env['PROGRAM_NAME'] + '-icon_32px.png')
+        bld.install_as('${PREFIX}/share/icons/hicolor/48x48/apps/'+ icon_file_name, 'resources/' + bld.env['PROGRAM_NAME'] + '-icon_48px.png')
+        bld.install_as('${PREFIX}/share/icons/hicolor/256x256/apps/'+ icon_file_name, 'resources/' + bld.env['PROGRAM_NAME'] + '-icon_256px.png')
+        bld.install_as('${PREFIX}/share/icons/hicolor/512x512/apps/'+ icon_file_name, 'resources/' + bld.env['PROGRAM_NAME'] + '-icon_512px.png')
 
     # Keybindings
 

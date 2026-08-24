@@ -837,7 +837,8 @@ def options(opt):
     opt.load('compiler_c')
     opt.load('compiler_cxx')
     autowaf.set_options(opt, debug_by_default=True)
-    opt.add_option('--program-name', type='string', action='store', default='Ardour', dest='program_name',
+    # Badadau fork modification, 2026-08-24: use an independent default product name.
+    opt.add_option('--program-name', type='string', action='store', default='Badadau', dest='program_name',
                     help='The user-visible name of the program being built')
     opt.add_option('--arch', type='string', action='store', dest='arch',
                     help='Architecture-specific compiler FLAGS')
@@ -995,7 +996,9 @@ def configure(conf):
         if itstool != "itstool" or version[0] < "2":
             conf.fatal("--freedesktop requires itstool > 2.0.0 to translate files.")
 
-    conf.env['PROGRAM_NAME'] = Options.options.program_name or 'Ardour'
+    # Badadau fork modification, 2026-08-24: keep product data/config separate from Ardour.
+    conf.env['PROGRAM_NAME'] = Options.options.program_name or 'Badadau'
+    conf.env['PROGRAM_SLUG'] = re.sub(r'[^a-z0-9]+', '-', conf.env['PROGRAM_NAME'].lower()).strip('-') or 'badadau'
 
     conf.env['VERSION'] = VERSION
     conf.env['MAJOR'] = MAJOR
@@ -1626,7 +1629,8 @@ def build(bld):
     bld.path.find_dir ('libs/pbd/pbd')
 
     # set up target directories
-    lwrcase_dirname = 'ardour' + bld.env['MAJOR']
+    # Badadau fork modification, 2026-08-24: allow side-by-side installation with Ardour.
+    lwrcase_dirname = bld.env['PROGRAM_SLUG'] + bld.env['MAJOR']
 
     # configuration files go here
     bld.env['CONFDIR'] = os.path.join(bld.env['SYSCONFDIR'], lwrcase_dirname)

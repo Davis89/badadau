@@ -1,0 +1,5 @@
+# Badadau local build/configuration artifacts
+/build/
+/.waf*/
+**/__pycache__/
+*.pyc

@@ -22,7 +22,8 @@
 UI_CONFIG_VARIABLE (std::string, icon_set, "icon-set", "default")
 UI_CONFIG_VARIABLE (std::string, ui_rc_file, "ui-rc-file", "clearlooks.rc")
 UI_CONFIG_VARIABLE (std::string, ui_font_family, "ui-font-family", "Sans")
-UI_CONFIG_VARIABLE (std::string, color_file, "color-file", "dark")
+// Badadau fork modification, 2026-08-24: default to the fork theme.
+UI_CONFIG_VARIABLE (std::string, color_file, "color-file", "studio")
 UI_CONFIG_VARIABLE (bool, flat_buttons, "flat-buttons", false)
 UI_CONFIG_VARIABLE (bool, boxy_buttons, "boxy-buttons", false)
 UI_CONFIG_VARIABLE (bool, blink_rec_arm, "blink-rec-arm", false)
