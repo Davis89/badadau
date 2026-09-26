@@ -124,6 +124,12 @@ ActionManager::toggle_config_state (const char* group, const char* action, bool 
 	}
 }
 
+void
+ActionManager::quick_add_palette ()
+{
+	info << _("Badadau Quick Add Command Palette triggered") << endmsg;
+}
+
 /** Examine the state of a Configuration setting and a toggle action, and toggle the Configuration
  * setting if its state doesn't match the toggle action.
  * @param group Action group.
