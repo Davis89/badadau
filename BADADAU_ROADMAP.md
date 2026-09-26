@@ -5,6 +5,75 @@ Base: Ardour 9.8.0
 Fork identity: **Badadau** (final working/product name)
 License strategy: retain GPL-2.0-or-later compatibility and preserve upstream notices.
 
+---
+
+## Roadmap / Hoja de Ruta hacia la Versión Final 1.0 (Español)
+
+Esta sección resume la estrategia y el calendario por hitos para alcanzar la **Versión Final 1.0 de Badadau**:
+
+1. **Hito 1: v0.1 Alpha — Identidad de Producto y Shell Visual (Fases 0, 0.5 y 1)**
+   - Identidad propia (iconos, splash, directorio de configuración `badadau9` independiente de Ardour).
+   - Rediseño de la barra de transporte/aplicación superior y la disposición visual de paneles (Navegador | Arreglo | Inspector).
+   - Menús simplificados y ocultación de controles avanzados en vista predeterminada.
+
+2. **Hito 2: v0.5 Beta — Navegador Unificado y Flujo de Trabajo Rápido (Fases 2 y 3)**
+   - Buscador unificado e indexación asíncrona para plugins, muestras, MIDI y plantillas.
+   - Arrastrar y soltar desde el navegador con creación automática de pistas y cadenas de dispositivos.
+   - Creación rápida de pistas mediante paleta de comandos (`Quick Add`).
+   - Herramientas de Bounce in Place y congelado de pistas.
+
+3. **Hito 3: v0.8 Beta Abierta — Piano Roll, Mezclador Simplificado y Lanzador de Clips (Fases 4, 5 y 6)**
+   - Rediseño e integración fluida del Piano Roll (escalas, acordes, gestos rápidos de edición y humanización).
+   - Mezclador con vistas compactas y reordenación directa de inserciones.
+   - Matriz de Lanzador de Clips (Clip Launcher / Escenas) integrada con la línea de tiempo.
+
+4. **Hito 4: v0.9 Candidate a Release (RC) — Herramientas Creativas, Automatización y Pruebas de Estrés (Fase 7 y Control de Calidad)**
+   - Sistema de macros y scripts en Lua (sidechain automático, humanización, limpieza).
+   - Verificación de estabilidad, rendimiento en tiempo real y compatibilidad bidireccional de sesiones con Ardour.
+   - Cumplimiento estricto de licencias GPL-2.0+, eliminación de marcas registradas y auditoría de empaquetado (Linux/AppImage/Flatpak, macOS, Windows).
+
+5. **Hito 5: v1.0 Versión Final — Lanzamiento Público**
+   - Binarios estables multi-plataforma publicados junto al código fuente correspondiente exacto.
+   - Documentación de usuario final y guías de migración desde Ardour y otras DAWs.
+
+---
+
+## Milestone Releases / Path to v1.0 Final
+
+To reach a stable, production-ready **Badadau v1.0 Final**, development is structured into clear milestone releases:
+
+### Milestone 1: v0.1 Alpha — Product Identity & Visual Shell (Phases 0, 0.5, 1)
+- [x] Complete identity isolation (`badadau9` configuration namespace, splash, launcher, branding).
+- [ ] Complete clean Linux builds and setup CI build scripts.
+- [ ] Implement redesigned top application & transport bar.
+- [ ] Finalize primary workspace layout (Browser | Arrangement | Inspector) and workspace lower tabs.
+- **Target Goal:** Functional DAW shell distinguishable from stock Ardour, able to create, record, play, and save basic sessions.
+
+### Milestone 2: v0.5 Beta — Unified Browser & Fast Workflow (Phases 2 & 3)
+- [ ] Deliver unified asynchronous Browser for plugins, presets, samples, and templates with fuzzy search.
+- [ ] Implement drag-and-drop auto-track creation and inline effect chains.
+- [ ] Add Quick Add command palette for track and bus creation.
+- [ ] Implement bounce-in-place and track freeze/unfreeze workflows.
+- **Target Goal:** Complete song creation workflow without opening expert-level dialogs or menus.
+
+### Milestone 3: v0.8 Open Beta — Surface Polish: Piano Roll, Mixer & Clip Launcher (Phases 4, 5 & 6)
+- [ ] Streamline Piano Roll interaction: scale highlight/fold, quick chord entry, velocity manipulation, humanize/strum tools.
+- [ ] Implement compact/detailed Mixer strips and direct insert reordering.
+- [ ] Refine Clip Launcher / Scenes workflow with smooth Arrangement sync and linked clip copies.
+- **Target Goal:** Feature-complete user interface with fluid music creation capabilities.
+
+### Milestone 4: v0.9 Release Candidate (RC) — Creative Scripting, Stability & Compliance (Phase 7 & Audit)
+- [ ] Package first-party Lua creation tools and script browser.
+- [ ] Pass full session round-trip compatibility tests with upstream Ardour.
+- [ ] Complete cross-platform binary build verification (Linux AppImage/Flatpak, macOS, Windows).
+- [ ] Finalize trademark audit, GPL attribution check, and user documentation.
+- **Target Goal:** Zero critical bugs, solid audio performance, full legal & open-source packaging compliance.
+
+### Milestone 5: v1.0 Final Release
+- Official public release of binaries alongside exact source code repositories.
+
+---
+
 ## Product principles
 
 1. **Keep the mature engine; redesign the experience.** Avoid deep DSP/audio-engine changes unless a product requirement demands them.
