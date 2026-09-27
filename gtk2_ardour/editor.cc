@@ -687,10 +687,10 @@ Editor::Editor ()
 	_midi_inspector->chord_box->InvertChord.connect ([this](bool up) { invert_selected_chord (up); });
 	_midi_inspector->chord_box->DropChord.connect ([this](std::vector<int> which_notes) { drop_selected_chord (which_notes); });
 
+	add_notebook_page (_("Clips"), _("Clips"), _trigger_clip_picker);
 	add_notebook_page (_("Tracks"), _("Tracks & Busses"), _routes->widget ());
 	add_notebook_page (_("Sources"), _("Sources"), _sources->widget ());
 	add_notebook_page (_("Regions"), _("Regions"), _regions->widget ());
-	add_notebook_page (_("Clips"), _("Clips"), _trigger_clip_picker);
 	add_notebook_page (_("Arrange"), _("Arrangement"), _sections->widget ());
 	add_notebook_page (_("Snaps"), _("Snapshots"), _snapshots->widget ());
 	add_notebook_page (_("Groups"), _("Track & Bus Groups"), _route_groups->widget ());

@@ -62,6 +62,9 @@ namespace ActionManager {
 	extern void toggle_config_state (const char* group, const char* action, bool (UIConfiguration::*set)(bool), bool (UIConfiguration::*get)(void) const);
 	extern void toggle_config_state (const char* group, const char* action, bool (ARDOUR::RCConfiguration::*set)(bool), bool (ARDOUR::RCConfiguration::*get)(void) const);
 	extern void toggle_config_state_foo (const char* group, const char* action, sigc::slot<bool, bool>, sigc::slot<bool>);
+
+	/* Badadau command palette & quick add actions */
+	extern void quick_add_palette ();
 }
 
 

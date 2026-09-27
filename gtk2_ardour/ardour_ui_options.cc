@@ -204,6 +204,14 @@ ARDOUR_UI::follow_edits_action_toggled ()
 }
 
 void
+ARDOUR_UI::toggle_badadau_compact_mode ()
+{
+	if (_main_bar) {
+		_main_bar->set_badadau_compact (!_main_bar->is_badadau_compact ());
+	}
+}
+
+void
 ARDOUR_UI::punch_action_toggled ()
 {
 	if (ignore_dual_punch) {

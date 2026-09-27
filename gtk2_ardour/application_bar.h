@@ -63,8 +63,12 @@ public:
 
 	void focus_on_clock ();
 
+	bool is_badadau_compact () const { return _badadau_compact_mode; }
+	void set_badadau_compact (bool compact);
+
 private:
 	void on_parent_changed (Gtk::Widget*);
+	void apply_badadau_compact_layout ();
 
 	bool sync_button_clicked (GdkEventButton*);
 
@@ -117,6 +121,7 @@ private:
 	void blink_handler (bool);
 
 	bool                          _have_layout;
+	bool                          _badadau_compact_mode;
 	BasicUI*                      _basic_ui;
 	Gtk::Table                    _table;
 	TransportControlUI            _transport_ctrl;

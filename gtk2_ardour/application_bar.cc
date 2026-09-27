@@ -112,6 +112,7 @@ static const gchar *_record_mode_strings_[] = {
 
 ApplicationBar::ApplicationBar ()
 	: _have_layout (false)
+	, _badadau_compact_mode (true)
 	, _basic_ui (0)
 	, _latency_disable_button (ArdourButton::led_default_elements)
 	, _auto_return_button (ArdourButton::default_elements)
@@ -419,6 +420,54 @@ ApplicationBar::on_parent_changed (Gtk::Widget*)
 	if (_session) {
 		repack_transport_hbox ();
 	}
+
+	if (_badadau_compact_mode) {
+		apply_badadau_compact_layout ();
+	}
+}
+
+void
+ApplicationBar::set_badadau_compact (bool compact)
+{
+	if (_badadau_compact_mode == compact) {
+		return;
+	}
+	_badadau_compact_mode = compact;
+	if (_have_layout) {
+		if (_badadau_compact_mode) {
+			apply_badadau_compact_layout ();
+		} else {
+			repack_transport_hbox ();
+		}
+	}
+}
+
+void
+ApplicationBar::apply_badadau_compact_layout ()
+{
+	/* Hide secondary/advanced components in Badadau default compact bar */
+	_secondary_clock.hide ();
+	_secondary_clock_spacer.hide ();
+	_recpunch_spacer.hide ();
+	_punch_label.hide ();
+	_punch_in_button.hide ();
+	_punch_out_button.hide ();
+	_punch_space.hide ();
+	_layered_label.hide ();
+	_record_mode_selector.hide ();
+	_latency_spacer.hide ();
+	_latency_disable_button.hide ();
+	_route_latency_value.hide ();
+	_cuectrl_spacer.hide ();
+	_cue_rec_enable.hide ();
+	_cue_play_enable.hide ();
+	_mini_timeline.hide ();
+	_scripts_spacer.hide ();
+	for (int i = 0; i < MAX_LUA_ACTION_BUTTONS; ++i) {
+		_action_script_call_btn[i].hide ();
+	}
+
+	repack_transport_hbox ();
 }
 #undef PX_SCALE
 #undef TCOL
